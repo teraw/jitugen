@@ -26,7 +26,8 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
-
+    @board.ip = request.remote_ip
+    
     respond_to do |format|
       if @board.save
         format.html { redirect_to @board, notice: 'Board was successfully created.' }
@@ -72,4 +73,5 @@ class BoardsController < ApplicationController
     def board_params
       params.require(:board).permit(:title, :editor, :ip)
     end
+
 end
