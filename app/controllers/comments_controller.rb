@@ -25,7 +25,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @board = Board.find(params[:board_id])
-    @comment = Comment.new(comment_params)
+    
+    @comment = Comment.new(comment_params) #入力したコメントを入れる
+    
+
+    
+    
     @comment.board = @board 
     
     @comment.ip = request.remote_ip

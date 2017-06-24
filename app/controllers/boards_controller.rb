@@ -11,6 +11,8 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @comment = Comment.new
+    #comment = Comment.search(id: "' or 1=1 --'")
+
   end
 
   # GET /boards/new

@@ -26,3 +26,15 @@ rake db:migrate
 
 
 https://www.virment.com/rails-sortable-table/
+
+
+
+課題
+・連投規制
+・トリップ機能
+・画像貼り付け
+・改行
+・タイムゾーンの設定
+・ソート
+・削除機能の強化
+⇒スレッド作成者のみがでスレ削除できるようにする。
