@@ -11,6 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170623022512) do
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "title"
+    t.string   "editor"
+    t.text     "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "board_id"
+    t.string   "name"
+    t.text     "content"
+    t.text     "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

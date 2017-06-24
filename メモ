@@ -1,0 +1,28 @@
+rails g scaffold board title:string editor:string ip:text
+rails destroy scaffold board title:string editor:string ip:text
+
+・板情報
+
+題名
+作成者
+IPアドレス
+
+
+rails g scaffold comments board_id:integer name:string conment:text ip:text
+rails destroy scaffold comments board_id:integer name:string conment:text ip:text
+
+
+rails g scaffold comment board_id:integer name:string content:text
+rails destroy scaffold comment board_id:integer name:string content:text
+・コメント情報
+板番号
+投稿者名
+コメント
+IPアドレス
+
+
+
+rake db:migrate
+
+
+https://www.virment.com/rails-sortable-table/
