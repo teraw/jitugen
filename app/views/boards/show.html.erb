@@ -18,14 +18,10 @@
 <div>
 <p>
 <span id="<%= 1 + index %>"><%= link_to 1 + index,  :anchor => '1 + index' %></span>
-<%= name(comment.name) %>
-
-<!-- comment.name -->-<%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+<%= name(comment.name) %>-<%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
 </p>
 <div class="comment">
-<!--sanitize(simple_format(h(comment.content))) -->
-<%= sanitize(autoLink(simple_format(h(comment.content)).gsub(/\r\n|\r|\n/, '<br>'))) %>
-<!-- -->
+<%= sanitize(autoLink((comment.content).gsub(/\R/, '<br/>'))) %>
 </div>
 </div>
 <% end %>

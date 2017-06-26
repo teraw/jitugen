@@ -20,7 +20,7 @@ module ApplicationHelper
             trip = Digest::Trip.digest key
             [name, trip].join "◆" 
         elsif  name = "" then #nameが未入力だった場合
-           name && @editor = "名無しさん"
+            name && @editor = "名無しさん"
         else 
             name
         end
