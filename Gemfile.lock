@@ -50,6 +50,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
+    digest-trip (0.5.1)
     erubis (2.7.0)
     execjs (2.7.0)
     globalid (0.3.7)
@@ -147,6 +148,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  digest-trip
   jbuilder (~> 2.0)
   jquery-rails
   pg

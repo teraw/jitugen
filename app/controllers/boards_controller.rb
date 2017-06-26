@@ -1,18 +1,17 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
+  
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    @boards = Board.all.order(sort_column + ' ' + sort_direction)
   end
 
   # GET /boards/1
   # GET /boards/1.json
   def show
     @comment = Comment.new
-    #comment = Comment.search(id: "' or 1=1 --'")
-
   end
 
   # GET /boards/new
@@ -30,12 +29,14 @@ class BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board.ip = request.remote_ip
     
-    respond_to do |format|
+    respond_to do |format|#フォーマットの変更
       if @board.save
-        format.html { redirect_to @board, notice: 'Board was successfully created.' }
-        format.json { render :show, status: :created, location: @board }
+      #データベース更新が成功なら実行
+        format.html { redirect_to @board, notice: 'Board was successfully created.' }#成功コメント表示
+        format.json { render :show, status: :created, location: @board }#showアクションを呼び出し
       else
-        format.html { render :new }
+      #データベース更新が失敗なら実行
+        format.html { render :new }#newアクションの呼び出し
         format.json { render json: @board.errors, status: :unprocessable_entity }
       end
     end
@@ -74,6 +75,14 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, :editor, :ip)
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
+ 
+    def sort_column
+      Board.column_names.include?(params[:sort]) ? params[:sort] : "title"
     end
 
 end

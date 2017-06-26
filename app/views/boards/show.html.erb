@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <h1><%= @board.title %></h1>
- <%= @board.editor %> |
+ スレッド作成者：<%= name(@board.editor) %> （作成日時：<%= @board.created_at.strftime("%Y/%m/%d %H:%M") %>）
 
 
 
@@ -18,15 +17,20 @@
 <% @board.comments.each_with_index do |comment, index| %>
 <div>
 <p>
-<%= 1 + index %>
-<%= comment.name %>-<%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+<span id="<%= 1 + index %>"><%= link_to 1 + index,  :anchor => '1 + index' %></span>
+<%= name(comment.name) %>
+
+<!-- comment.name -->-<%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
 </p>
-<p>
-<%= comment.content %>
-</p>
+<div class="comment">
+<!--sanitize(simple_format(h(comment.content))) -->
+<%= sanitize(autoLink(simple_format(h(comment.content)).gsub(/\r\n|\r|\n/, '<br>'))) %>
+<!-- -->
+</div>
 </div>
 <% end %>
 <% end %>
+
 <hr>
 <h2>新規コメント投稿</h2>
 <%= render 'comments/form' %>

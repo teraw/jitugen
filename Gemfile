@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+#gem "carrierwave"
+
+gem 'digest-trip'#トリップキー生成https://github.com/beyond/digest-trip
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

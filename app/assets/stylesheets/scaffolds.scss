@@ -1,10 +1,22 @@
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+@font-face {
+  font-family: 'Mona-ipag';
+  src: font-url("ipag-mona.ttf");
 }
+
+@font-face {
+  font-family: 'Mona-ipagp';
+  src: font-url("ipagp-mona.ttf");
+}
+
+body {
+background-color: #fff;
+color: #333;
+font-family:"ＭＳ Ｐゴシック","MS PGothic","Mona",sans-serif;
+font-size:16px;
+line-height:18px;
+}
+
+
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -12,10 +24,12 @@ p, ol, ul, td {
   line-height: 18px;
 }
 
-pre {
+div.comment{
+  font-family:"Mona-ipag","Mona-ipagp";
   background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+  padding: 2px;
+  padding-left: 10px;
+
 }
 
 a {

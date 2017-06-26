@@ -3,17 +3,11 @@
 <h1>スレッド一覧</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>題名</th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @boards.each do |board| %>
       <tr>
-        <td><%= board.title %></td>
-        <td><%= link_to '表示', board %></td>
+        <td><%= link_to board.title, board %>（<%= Comment.where("board_id = ?",board).count %>）</td>
+        <td><%= board.created_at.strftime("%Y/%m/%d %H:%M") %></td>   
         <td><%= link_to '編集', edit_board_path(board) %></td>
         <td><%= link_to '削除', board, method: :delete, data: { confirm: '削除しますか？' } %></td>
       </tr>
