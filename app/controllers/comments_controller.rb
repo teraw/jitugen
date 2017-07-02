@@ -25,17 +25,32 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @board = Board.find(params[:board_id])
-    
     @comment = Comment.new(comment_params) #入力したコメントを入れる
-    
-
-    
-    
     @comment.board = @board 
-    
     @comment.ip = request.remote_ip
-
     
+    #セッション情報にユニークIDと生成時刻を投入
+session[:data] = SecureRandom.urlsafe_base64(8)
+sessId = cookies[:_w_session] 
+
+      p("成功")
+      p(sessId)
+      p(ActiveRecord::SessionStore::Session.find_by(session_id: sessId))
+
+#session[:data] = SecureRandom.urlsafe_base64(8)
+
+ 
+      #if params[:ip] == @comment.ip#IPが同じであれば実行される
+        #if Time.zone.now > 1.day.ago#時間が24時間以上経っていれば
+          #params[:digitid] = SecureRandom.urlsafe_base64(8)
+        #else 
+          #params[:digitid] = "だよだよ" #@comment.digitid
+          
+          #
+        #end
+
+     # end
+
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @board, notice: 'Comment was successfully created.' }
@@ -80,6 +95,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:board_id, :name, :content, :ip)
+      params.require(:comment).permit(:board_id, :name, :content, :ip, :digitid)
     end
+    
 end

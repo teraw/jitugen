@@ -12,11 +12,16 @@ class BoardsController < ApplicationController
   # GET /boards/1.json
   def show
     @comment = Comment.new
+    
+
   end
 
   # GET /boards/new
   def new
     @board = Board.new
+    
+    
+    
   end
 
   # GET /boards/1/edit

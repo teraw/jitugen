@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 gem 'digest-trip'#トリップキー生成https://github.com/beyond/digest-trip
 
+gem 'activerecord-session_store'
+#gem "redis-rails"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

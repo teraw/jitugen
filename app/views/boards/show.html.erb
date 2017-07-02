@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <h1><%= @board.title %></h1>
  スレッド作成者：<%= name(@board.editor) %> （作成日時：<%= @board.created_at.strftime("%Y/%m/%d %H:%M") %>）
 
@@ -14,16 +15,31 @@
 <% if @board.comments.empty? %>
 コメントはまだありません
 <% else %>
-<% @board.comments.each_with_index do |comment, index| %>
+<% @board.comments.each.with_index(1)  do |comment, index| %>
 <div>
 <p>
-<span id="<%= 1 + index %>"><%= link_to 1 + index,  :anchor => '1 + index' %></span>
+<span id="<%= index %>"><%= link_to index,  :anchor => index %></span>
 <%= name(comment.name) %>-<%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+ID:<%= @sessId %>
+
+
+
+<!--@session_id
+#セｯｼｮﾝIDを元にdataをprintoutしてみればokﾃﾞｽﾖ 
+printout = 
+# comment.digitid
+
+テスト：
+Time.zone.now > 1.day.ago -->
+
 </p>
 <div class="comment">
-<%= sanitize(autoLink((comment.content).gsub(/\R/, '<br/>'))) %>
+<%= sanitize(autoLink(h(comment.content).gsub(/\R/, '<br/>'))) %>
+
+
 </div>
 </div>
+
 <% end %>
 <% end %>
 
